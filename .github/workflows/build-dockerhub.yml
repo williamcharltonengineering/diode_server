@@ -18,11 +18,14 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-            
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: diode:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/diode:latest
           labels: ${{ steps.meta.outputs.labels }}
