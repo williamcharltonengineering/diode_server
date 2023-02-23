@@ -29,5 +29,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/diode:${{ vars.GITHUB_REF_NAME }},${{ secrets.DOCKERHUB_USERNAME }}/diode:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/diode:latest
           labels: ${{ steps.meta.outputs.labels }}
