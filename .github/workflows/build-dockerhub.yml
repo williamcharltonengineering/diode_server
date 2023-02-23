@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    tags:
+      - v*
 
 jobs:
   push_to_registry:
@@ -27,5 +29,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/diode:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/diode:${GITHUB_REF_NAME},${{ secrets.DOCKERHUB_USERNAME }}/diode:latest
           labels: ${{ steps.meta.outputs.labels }}
